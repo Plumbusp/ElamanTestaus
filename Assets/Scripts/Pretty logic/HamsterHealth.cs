@@ -3,75 +3,63 @@ using UnityEngine.UI;
 using TMPro;
 using System.IO;
 
-public class HamsterHealth: SavingsController
+public class HamsterHealth: ISavable
 {
-    public string health;
-    string healthPath;
-
     private float _maxValue;
     private Slider _healthBar;
     private TMP_Text _textForHealth;
 
     private float _currentHealth;
 
+    public string fileName { get; private set; }
+
+    public string currentValue { get ; set; }
+
+
     public HamsterHealth(float maxValue, Slider healthBar, TMP_Text textForHealth)
     {
         this._maxValue = maxValue;
         this._healthBar = healthBar;
         this._textForHealth = textForHealth;
-        healthPath = CreatePath("health.txt");
+        HealthToDefault();
     }
-
-    public void SaveHealth()
+    public void SetValue<T>(T amount)
     {
-        SaveData(healthPath, _currentHealth.ToString()); // save health  
-    }
-
-    public string LoadHealth()
-    {
-        if(LoadData(healthPath)== null)
+        if (float.TryParse(amount.ToString(), out float amountInFloat))
         {
-            HealthToDefault();
-            return _currentHealth.ToString();
+            _currentHealth = amountInFloat;
+            _healthBar.value = _currentHealth;
+            _textForHealth.text = _currentHealth.ToString();
+            HowMuchHealth();
         }
-        float health = float.Parse(LoadData(healthPath));
-        SetHealth(health);  // set health to saved health( it also could be null). Convert returned string to float for health.
-        return _currentHealth.ToString();
-    }
-    
-    public void HealthToDefault()
-    {
-        SetHealth(_healthBar.maxValue);
+        else
+        {
+            Debug.LogWarning(amount.ToString());
+        }
+
     }
 
     public void Decrease()
     {
         if (!(_currentHealth <= _healthBar.minValue))
         {
-            SetHealth(_currentHealth -= 10f);
+            SetValue(_currentHealth -= 10f);
             HowMuchHealth();
         }
     }
-
     public void Increase()
     {
         if (!(_currentHealth >= _maxValue))
         {
-            SetHealth(_currentHealth += 10f);
+            SetValue(_currentHealth += 10f);
             HowMuchHealth();
         }
     }
 
-    private void SetHealth(float amount)
+
+    private void HealthToDefault()
     {
-        _currentHealth = amount;
-        _healthBar.value = _currentHealth;
-        _textForHealth.text = _currentHealth.ToString();
-        HowMuchHealth();
-    }
-    private float GetCurrentHealth()
-    {
-        return _currentHealth;
+        SetValue(_healthBar.maxValue);
     }
 
     private void HowMuchHealth()
@@ -89,6 +77,26 @@ public class HamsterHealth: SavingsController
             ImageChanger.instance.ChangeConditionTo(ImageChanger.Condition.sad);
         }
     }
+
+    /*
+public void SaveHealth()
+{
+    SaveData(healthPath, _currentHealth.ToString()); // save health  
+}
+
+public string LoadHealth()
+{
+    if(LoadData(healthPath)== null)
+    {
+        HealthToDefault();
+        return _currentHealth.ToString();
+    }
+    float health = float.Parse(LoadData(healthPath));
+    SetHealth(health);  // set health to saved health( it also could be null). Convert returned string to float for health.
+    return _currentHealth.ToString();
+}
+
+*/
 
 
     /*

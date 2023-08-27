@@ -14,8 +14,6 @@ public class PlayerData : MonoBehaviour
     HamsterHealth hamsterHealth;
     HamsterName hamsterName;
 
-    [HideInInspector] public string theName;
-    [HideInInspector] public string health;
     //private Dictionary<string, string> playerData = new Dictionary<string, string>();
     public void Awake()
     {
@@ -25,25 +23,24 @@ public class PlayerData : MonoBehaviour
 
     public void SavePlayerData()
     {
-        hamsterHealth.SaveHealth();
-        hamsterName.SaveName(theName);
+        JsonSaveManager.SaveFile(hamsterName);
+        JsonSaveManager.SaveFile(hamsterHealth);
     }
     public void LoadPlayerData()      // if target data is not null, then load it
     {
-        hamsterHealth.LoadHealth();
-        hamsterName.LoadName();
+        hamsterHealth.SetValue(JsonSaveManager.LoadFile(hamsterHealth));
+        hamsterName.SetValue(JsonSaveManager.LoadFile(hamsterName));
     }
     public void SaveNameLocaly()
     {
-        theName = "Hamsters's name: " + nameInputField.text;
-        textForName.text = theName;
+        hamsterName.SetValue(nameInputField.text);
         nameInputField.text = "";
     }
 
     public void DiscardAllData()
     {
-        hamsterName.DiscardName();
-        hamsterHealth.HealthToDefault();
+        JsonSaveManager.DiscardFile(hamsterHealth);
+        JsonSaveManager.DiscardFile(hamsterName);
     }
     public void DecreaseHealth()
     {

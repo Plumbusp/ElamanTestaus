@@ -2,18 +2,27 @@ using UnityEngine;
 using System.IO;
 using TMPro;
 
-public class HamsterName : SavingsController
+public class HamsterName : ISavable
 {
-    string hamsterName;
     string namePath;
     TMP_Text _textForName;
-    
+
+    public string fileName { get; private set; }
+    public string currentValue { get ; set; }
+
     public HamsterName(TMP_Text textForName)
     {
         _textForName = textForName;
-        namePath = CreatePath("name.txt");
+        currentValue = string.Empty;
     }
-    
+
+    public void SetValue<T>(T name)
+    {
+        currentValue = "Hamsters's name: " + name.ToString();
+        _textForName.text = currentValue;
+    }
+
+    /*
     public void SaveName(string nameToSave)
     {
         SaveData(namePath, nameToSave);
@@ -29,14 +38,7 @@ public class HamsterName : SavingsController
         SetName(hamsterName);
         return hamsterName;
     }
-    
-    private void SetName(string name)
-    {
-        this.hamsterName = "Hamsters's name: " + name;
-        _textForName.text = this.hamsterName;
-    }
-    public void DiscardName()
-    {
-        DiscardData(namePath);
-    }
+    */
+
+
 }

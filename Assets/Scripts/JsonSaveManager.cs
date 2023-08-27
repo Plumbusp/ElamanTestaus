@@ -19,13 +19,25 @@ public static class JsonSaveManager
         
         //SAVE JSON to file
     }
-    public static ISavable LoadFile(ISavable so)
+    public static string LoadFile(ISavable so)
     {
         string fullPath = Application.persistentDataPath + directory + so.fileName;
+        if(!File.Exists(fullPath))
+        {
+            return so.currentValue;
+        }
         string savedata = File.ReadAllText(fullPath);  //Get File with JSON
         ISavable savable = JsonUtility.FromJson<ISavable>(savedata);   //Convert from JSON to ISavable
-        return savable;               // return ISavable object
+        return savable.currentValue;               // return ISavable object
         
+    }
+    public static void DiscardFile(ISavable so)
+    {
+        string fullPath = Application.persistentDataPath + directory + so.fileName;
+        if(File.Exists(fullPath))
+        {
+            File.Delete(fullPath);
+        }
     }
                
 }
