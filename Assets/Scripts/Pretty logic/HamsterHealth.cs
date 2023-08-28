@@ -12,12 +12,14 @@ public class HamsterHealth: ISavable
     private float _currentHealth;
 
     public string fileName { get; private set; }
-
     public string currentValue { get ; set; }
+    public string initialValue { get; private set; }
 
 
     public HamsterHealth(float maxValue, Slider healthBar, TMP_Text textForHealth)
     {
+        fileName = "hamsterHealth.txt";
+        initialValue = maxValue.ToString();
         this._maxValue = maxValue;
         this._healthBar = healthBar;
         this._textForHealth = textForHealth;
@@ -27,6 +29,7 @@ public class HamsterHealth: ISavable
     {
         if (float.TryParse(amount.ToString(), out float amountInFloat))
         {
+            currentValue = amountInFloat.ToString();
             _currentHealth = amountInFloat;
             _healthBar.value = _currentHealth;
             _textForHealth.text = _currentHealth.ToString();
@@ -59,7 +62,8 @@ public class HamsterHealth: ISavable
 
     private void HealthToDefault()
     {
-        SetValue(_healthBar.maxValue);
+
+        SetValue(initialValue);
     }
 
     private void HowMuchHealth()

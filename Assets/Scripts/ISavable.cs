@@ -4,5 +4,6 @@ using UnityEngine;
 {
   public string fileName { get; }
   public string currentValue { get; set; }
+    public string initialValue { get; } 
     public void SetValue<T> (T value);
 }

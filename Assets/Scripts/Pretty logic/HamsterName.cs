@@ -9,16 +9,19 @@ public class HamsterName : ISavable
 
     public string fileName { get; private set; }
     public string currentValue { get ; set; }
+    public string initialValue { get; private set; }
 
     public HamsterName(TMP_Text textForName)
     {
+        fileName = "hamsterName.txt";
+        initialValue = " initial value";
         _textForName = textForName;
-        currentValue = string.Empty;
+        currentValue = " pupu ";
     }
 
     public void SetValue<T>(T name)
     {
-        currentValue = "Hamsters's name: " + name.ToString();
+        currentValue = name.ToString();
         _textForName.text = currentValue;
     }
 

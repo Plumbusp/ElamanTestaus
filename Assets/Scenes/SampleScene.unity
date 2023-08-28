@@ -1017,8 +1017,6 @@ MonoBehaviour:
   textForHealth: {fileID: 948507880}
   textForName: {fileID: 1644972710}
   nameInputField: {fileID: 934643516}
-  theName: 
-  health: 
 --- !u!114 &316134551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1506,7 +1504,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &628102876
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1842,7 +1840,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &701089384
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3238,7 +3236,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

@@ -15,6 +15,7 @@ public class MenuLogic : MonoBehaviour
     {
         StartInputMenu();
         playerData.DiscardAllData();
+        playerData.LoadPlayerData();
     }
     public void StartGame()
     {

@@ -23,13 +23,20 @@ public class PlayerData : MonoBehaviour
 
     public void SavePlayerData()
     {
-        JsonSaveManager.SaveFile(hamsterName);
-        JsonSaveManager.SaveFile(hamsterHealth);
+        JsonSaveManager.SaveFile<HamsterName>(hamsterName, hamsterName.fileName);
+        JsonSaveManager.SaveFile<HamsterHealth>(hamsterHealth, hamsterHealth.fileName);
     }
     public void LoadPlayerData()      // if target data is not null, then load it
     {
-        hamsterHealth.SetValue(JsonSaveManager.LoadFile(hamsterHealth));
-        hamsterName.SetValue(JsonSaveManager.LoadFile(hamsterName));
+        HamsterHealth newHamsterHealth = JsonSaveManager.LoadFile<HamsterHealth>(new HamsterHealth(maxHealthValue,healthSlider,textForHealth), hamsterHealth.fileName);
+        Debug.Log(newHamsterHealth.currentValue);
+        hamsterHealth.SetValue(newHamsterHealth.currentValue);
+        HamsterName newHamsterName = JsonSaveManager.LoadFile<HamsterName>(new HamsterName(textForName), hamsterName.fileName);
+        Debug.Log(newHamsterName.currentValue);
+        hamsterName.SetValue(newHamsterName.currentValue);
+
+        //string nameValue = JsonSaveManager.LoadFile<HamsterName>(hamsterName).currentValue;
+        //hamsterName.SetValue(nameValue);
     }
     public void SaveNameLocaly()
     {
@@ -39,8 +46,8 @@ public class PlayerData : MonoBehaviour
 
     public void DiscardAllData()
     {
-        JsonSaveManager.DiscardFile(hamsterHealth);
-        JsonSaveManager.DiscardFile(hamsterName);
+        JsonSaveManager.DiscardFile(hamsterHealth.fileName);
+        JsonSaveManager.DiscardFile(hamsterName.fileName);
     }
     public void DecreaseHealth()
     {
