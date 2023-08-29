@@ -2,7 +2,7 @@ using UnityEngine;
 using System.IO;
 using TMPro;
 
-public class HamsterName : SavingsController
+public class HamsterName : MonoBehaviour, ISavable
 {
     string hamsterName;
     string namePath;
@@ -11,23 +11,16 @@ public class HamsterName : SavingsController
     public HamsterName(TMP_Text textForName)
     {
         _textForName = textForName;
-        namePath = CreatePath("name.txt");
+        //namePath = CreatePath("name.txt");
     }
     
-    public void SaveName(string nameToSave)
+    public void SaveData(ref DataObject data)
     {
-        SaveData(namePath, nameToSave);
+        data.name = hamsterName;
     }
-    public string LoadName()
+    public void LoadData(DataObject data)
     {
-        if(LoadData(namePath) == null)
-        {
-            SetName("");
-            return " ";
-        }
-        hamsterName = LoadData(namePath);
-        SetName(hamsterName);
-        return hamsterName;
+        hamsterName = data.name;
     }
     
     private void SetName(string name)
@@ -37,6 +30,6 @@ public class HamsterName : SavingsController
     }
     public void DiscardName()
     {
-        DiscardData(namePath);
+        
     }
 }

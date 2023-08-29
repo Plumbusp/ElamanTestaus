@@ -14,7 +14,6 @@ public class MenuLogic : MonoBehaviour
     public void RestartGame()
     {
         StartInputMenu();
-        playerData.DiscardAllData();
     }
     public void StartGame()
     {
@@ -23,7 +22,6 @@ public class MenuLogic : MonoBehaviour
     public void ContinueGame()
     {
         StartGameMenu();
-        playerData.LoadPlayerData();
     }
     public void QuitGame()
     {

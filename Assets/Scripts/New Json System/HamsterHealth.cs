@@ -3,32 +3,36 @@ using UnityEngine.UI;
 using TMPro;
 using System.IO;
 
-public class HamsterHealth: SavingsController
+public class HamsterHealth: MonoBehaviour, ISavable
 {
     public string health;
     string healthPath;
 
-    private float _maxValue;
-    private Slider _healthBar;
-    private TMP_Text _textForHealth;
+    public float _maxValue;
+    public Slider _healthBar;
+    public TMP_Text _textForHealth;
 
     private float _currentHealth;
 
+    /*
     public HamsterHealth(float maxValue, Slider healthBar, TMP_Text textForHealth)
     {
         this._maxValue = maxValue;
         this._healthBar = healthBar;
         this._textForHealth = textForHealth;
-        healthPath = CreatePath("health.txt");
+    }
+    */
+
+    public void SaveData(ref DataObject data)
+    {
+        data.health = _currentHealth;  
     }
 
-    public void SaveHealth()
+    public void LoadData(DataObject data)
     {
-        SaveData(healthPath, _currentHealth.ToString()); // save health  
-    }
+        SetHealth(data.health);
 
-    public string LoadHealth()
-    {
+        /*
         if(LoadData(healthPath)== null)
         {
             HealthToDefault();
@@ -37,6 +41,7 @@ public class HamsterHealth: SavingsController
         float health = float.Parse(LoadData(healthPath));
         SetHealth(health);  // set health to saved health( it also could be null). Convert returned string to float for health.
         return _currentHealth.ToString();
+        */
     }
     
     public void HealthToDefault()

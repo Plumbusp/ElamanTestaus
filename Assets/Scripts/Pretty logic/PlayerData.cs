@@ -19,40 +19,10 @@ public class PlayerData : MonoBehaviour
     //private Dictionary<string, string> playerData = new Dictionary<string, string>();
     public void Awake()
     {
-        hamsterHealth = new HamsterHealth(maxHealthValue, healthSlider, textForHealth);
-        hamsterName = new HamsterName(textForName);
+        //hamsterHealth = new HamsterHealth(maxHealthValue, healthSlider, textForHealth);
+       // hamsterName = new HamsterName(textForName);
     }
 
-    public void SavePlayerData()
-    {
-        hamsterHealth.SaveHealth();
-        hamsterName.SaveName(theName);
-    }
-    public void LoadPlayerData()      // if target data is not null, then load it
-    {
-        hamsterHealth.LoadHealth();
-        hamsterName.LoadName();
-    }
-    public void SaveNameLocaly()
-    {
-        theName = "Hamsters's name: " + nameInputField.text;
-        textForName.text = theName;
-        nameInputField.text = "";
-    }
-
-    public void DiscardAllData()
-    {
-        hamsterName.DiscardName();
-        hamsterHealth.HealthToDefault();
-    }
-    public void DecreaseHealth()
-    {
-        hamsterHealth.Decrease();
-    }
-    public void IncreaseHealth()
-    {
-        hamsterHealth.Increase();
-    }
 
 }
 
