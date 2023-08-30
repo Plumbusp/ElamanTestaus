@@ -4,7 +4,7 @@ using TMPro;
 
 public class MenuLogic : MonoBehaviour
 {
-    [SerializeField] private PlayerData playerData;
+    [SerializeField] private UIManager playerData;
 
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject InputMenu;

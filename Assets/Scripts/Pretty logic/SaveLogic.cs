@@ -14,7 +14,7 @@ public class SaveLogic : SavingsController
 
     private HamsterHealth hamsterHealth;
     private HamsterName hamsterName;
-    private PlayerData[] PlayerDatas;
+    private UIManager[] PlayerDatas;
 
     //List<string> Datas = new List<string>();
     //  Dictionary<string, string> Datas = new Dictionary<string, string>();

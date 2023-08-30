@@ -1,19 +1,20 @@
 using UnityEngine;
 using System.IO;
 using TMPro;
+using UnityEngine.UI;
 
 public class HamsterName : MonoBehaviour, ISavable
 {
     string hamsterName;
-    string namePath;
-    TMP_Text _textForName;
+    [SerializeField] TMP_Text textForName;
+    [SerializeField] TMP_InputField inputField;
     
     public HamsterName(TMP_Text textForName)
     {
-        _textForName = textForName;
+        this.textForName = textForName;
         //namePath = CreatePath("name.txt");
     }
-    
+
     public void SaveData(ref DataObject data)
     {
         data.name = hamsterName;
@@ -23,13 +24,14 @@ public class HamsterName : MonoBehaviour, ISavable
         hamsterName = data.name;
     }
     
+    public void SetNameThroughtInput()
+    {
+        SetName(inputField.text);
+        inputField.text = "";
+    }
     private void SetName(string name)
     {
         this.hamsterName = "Hamsters's name: " + name;
-        _textForName.text = this.hamsterName;
-    }
-    public void DiscardName()
-    {
-        
+        textForName.text = this.hamsterName;
     }
 }
