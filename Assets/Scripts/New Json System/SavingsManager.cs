@@ -28,7 +28,7 @@ public class SavingsManager : MonoBehaviour
 
         if(dataObject == null)
         {
-            NewGame();
+            dataObject = new DataObject();
             Debug.Log("No Saved Data Was Found");
         }
         foreach(ISavable savableObject in savableObjects)
@@ -36,7 +36,7 @@ public class SavingsManager : MonoBehaviour
             savableObject.LoadData(dataObject);
         }
 
-        Debug.Log(dataObject.name + dataObject.health.ToString());
+        //Debug.Log(dataObject.name + dataObject.health.ToString() + "LOADED");
     }
     public void SaveData()
     {
@@ -50,7 +50,10 @@ public class SavingsManager : MonoBehaviour
     public void NewGame()
     {
         dataObject = new DataObject();
-        LoadData();
+        foreach (ISavable savableObject in savableObjects)
+        {
+            savableObject.LoadData(dataObject);
+        }
     }
 
     private List<ISavable> FindAllISavableObjects()

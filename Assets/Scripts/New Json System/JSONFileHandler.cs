@@ -17,12 +17,19 @@ public class JSONFileHandler
     public DataObject Load()
     {
         DataObject loadedData = null;
+        string dataToLoad = string.Empty;
         string filePath = Path.Combine(Application.dataPath, _fileName);   // Create file path using directory path
 
         try
         {                    // variable to store string data in JSON format
-            string jsonData = File.ReadAllText(filePath);
-            loadedData = JsonUtility.FromJson<DataObject>(jsonData);   // convert from json to DataObject and return DataObject Loaded Data
+            using (FileStream stream = new FileStream(filePath, FileMode.Open))
+            {
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    dataToLoad = reader.ReadToEnd();
+                }
+            }
+            loadedData = JsonUtility.FromJson<DataObject>(dataToLoad);
             return loadedData;
         }
         catch(Exception e)
@@ -36,8 +43,14 @@ public class JSONFileHandler
         string filePath = Path.Combine(Application.dataPath, _fileName);   // Create file path using directory path
         try
         {
-            string jsonData = JsonUtility.ToJson(data);
-            File.WriteAllText(filePath, jsonData);
+            using (FileStream stream = new FileStream(filePath, FileMode.Create))
+            {
+                using (StreamWriter writer = new StreamWriter(stream))
+                {
+                    string dataToSave = JsonUtility.ToJson(data);
+                    writer.Write(dataToSave);
+                }
+            }
         }
         catch(Exception ex)
         {

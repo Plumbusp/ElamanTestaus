@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
-public class DataObject : MonoBehaviour
+public class DataObject 
 {
     public string name;
     public float health;
@@ -15,7 +15,7 @@ public class DataObject : MonoBehaviour
 
     public DataObject()
     {
-        name = "Rodent name: " + string.Empty;
+        name = "some name";
         health = 100;
     }
 }

@@ -5,25 +5,28 @@ using UnityEngine.UI;
 
 public class HamsterName : MonoBehaviour, ISavable
 {
-    string hamsterName;
-    [SerializeField] TMP_Text textForName;
-    [SerializeField] TMP_InputField inputField;
-    
-    public HamsterName(TMP_Text textForName)
-    {
-        this.textForName = textForName;
-        //namePath = CreatePath("name.txt");
-    }
+    private string name = "none";
+    [SerializeField] private InputField inputField;
+    [SerializeField] private TMP_Text textForName;
 
     public void SaveData(ref DataObject data)
     {
-        data.name = hamsterName;
+        data.name = name;
+        Debug.Log(name + " saved");
     }
     public void LoadData(DataObject data)
-    {
-        hamsterName = data.name;
+    {       
+        name = data.name;
+        Debug.Log(name + " loaded");
     }
-    
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log(name);
+        }
+    }
     public void SetNameThroughtInput()
     {
         SetName(inputField.text);
@@ -31,7 +34,7 @@ public class HamsterName : MonoBehaviour, ISavable
     }
     private void SetName(string name)
     {
-        this.hamsterName = "Hamsters's name: " + name;
-        textForName.text = this.hamsterName;
+        this.name = "Rodent's name: " + name;
+        textForName.text = this.name;
     }
 }
