@@ -12,19 +12,19 @@ public class HamsterName : MonoBehaviour, ISavable
     public void SaveData(ref DataObject data)
     {
         data.name = name;
-        Debug.Log(name + " saved");
+        //Debug.Log(name + " saved");
     }
     public void LoadData(DataObject data)
     {       
         SetName(data.name);
-        Debug.Log(name + " loaded");
+        //Debug.Log(name + " loaded");
     }
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log(name);
+            //Debug.Log(name);
         }
     }
     public void SetNameThroughtInput()

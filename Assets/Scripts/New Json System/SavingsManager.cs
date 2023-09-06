@@ -16,6 +16,14 @@ public class SavingsManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
         fileHandler = new JSONFileHandler(directoryName, fileName);
         dataObject = new DataObject();
         savableObjects = FindAllISavableObjects();
@@ -34,8 +42,7 @@ public class SavingsManager : MonoBehaviour
         foreach(ISavable savableObject in savableObjects)
         {
             savableObject.LoadData(dataObject);
-        }
-
+        }     
         //Debug.Log(dataObject.name + dataObject.health.ToString() + "LOADED");
     }
     public void SaveData()

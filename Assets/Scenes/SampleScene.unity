@@ -1049,7 +1049,7 @@ MonoBehaviour:
   maxValue: 100
   healthBar: {fileID: 596635161}
   textForHealth: {fileID: 948507880}
-  _currentHealth: 0
+  _currentHealth: 11
 --- !u!114 &316134554
 MonoBehaviour:
   m_ObjectHideFlags: 0

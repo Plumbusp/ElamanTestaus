@@ -13,9 +13,9 @@ public class HamsterHealth: MonoBehaviour, ISavable
 
     void Start()
     {
-        _currentHealth = 100f;
-        healthBar.value = _currentHealth;
-        textForHealth.text = _currentHealth.ToString();
+        //_currentHealth = 100f;
+        //healthBar.value = _currentHealth;
+        //textForHealth.text = _currentHealth.ToString();
     }
     private void Update()
     {
@@ -36,14 +36,14 @@ public class HamsterHealth: MonoBehaviour, ISavable
 
     public void SaveData(ref DataObject data)
     { 
-        //data.health = _currentHealth;
+        data.health = _currentHealth;
         //Debug.Log(_currentHealth + " saved");
     }
 
     public void LoadData(DataObject data)
     {
-        //SetHealth(data.health);
-        Debug.Log(_currentHealth + " loaded");
+        SetHealth(data.health);
+        //Debug.Log(_currentHealth + " loaded");
     }
     
     public void HealthToDefault()
@@ -53,38 +53,36 @@ public class HamsterHealth: MonoBehaviour, ISavable
 
     public void Decrease()
     {
-        _currentHealth -= 10f;
-        HowMuchHealth();
 
         //Debug.Log(_currentHealth + " in beg. decrease");
-        //if (!(_currentHealth <= healthBar.minValue))
-        //{
-        //    SetHealth(_currentHealth -= 10f);
-        //    HowMuchHealth();
-        //}
+        if (!(_currentHealth <= healthBar.minValue))
+        {
+            SetHealth(_currentHealth -= 10f);
+            HowMuchHealth();
+       }
     }
 
     public void Increase()
     {
         //Debug.Log(_currentHealth + " in beg. increase");
-        //if (!(_currentHealth >= maxValue))
-        //{
-        //    SetHealth(_currentHealth += 10f);
-        //    HowMuchHealth();
-        //}
+        if (!(_currentHealth >= maxValue))
+       {
+            SetHealth(_currentHealth += 10f);
+            HowMuchHealth();
+        }
     }
 
-    private void SetHealth(float amount)
+    private void SetHealth(float amount) 
     {
-        //_currentHealth = amount;
-        //healthBar.value = _currentHealth;
-        //textForHealth.text = _currentHealth.ToString();
-        //HowMuchHealth();
+        _currentHealth = amount;
+        healthBar.value = _currentHealth;
+        textForHealth.text = _currentHealth.ToString();
+        HowMuchHealth();
     }
 
     private void HowMuchHealth()
     {
-        Debug.Log("Current healt: " + _currentHealth);
+        //Debug.Log("Current healt: " + _currentHealth);
         healthBar.value = _currentHealth;
         textForHealth.text = _currentHealth.ToString();
 

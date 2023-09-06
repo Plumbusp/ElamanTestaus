@@ -12,9 +12,6 @@ public class SaveLogic : SavingsController
     [SerializeField] private TMP_Text textForName;
     [SerializeField] private TMP_InputField nameInputField;
 
-    private HamsterHealth hamsterHealth;
-    private HamsterName hamsterName;
-    private UIManager[] PlayerDatas;
 
     //List<string> Datas = new List<string>();
     //  Dictionary<string, string> Datas = new Dictionary<string, string>();
