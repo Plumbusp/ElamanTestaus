@@ -1032,8 +1032,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 325f19f21685f4c42b1e9b3d323bcfcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textForName: {fileID: 1644972710}
   inputField: {fileID: 934643516}
+  textForName: {fileID: 1644972710}
 --- !u!114 &316134553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1049,6 +1049,7 @@ MonoBehaviour:
   maxValue: 100
   healthBar: {fileID: 596635161}
   textForHealth: {fileID: 948507880}
+  _currentHealth: 0
 --- !u!114 &316134554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2856,9 +2857,9 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerData, Assembly-CSharp
-        m_MethodName: SaveNameLocaly
+      - m_Target: {fileID: 316134552}
+        m_TargetAssemblyTypeName: HamsterName, Assembly-CSharp
+        m_MethodName: SetNameThroughtInput
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4030,8 +4031,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 325f19f21685f4c42b1e9b3d323bcfcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textForName: {fileID: 0}
   inputField: {fileID: 0}
+  textForName: {fileID: 0}
 --- !u!114 &1508038029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4047,6 +4048,7 @@ MonoBehaviour:
   maxValue: 0
   healthBar: {fileID: 0}
   textForHealth: {fileID: 0}
+  _currentHealth: 0
 --- !u!1 &1570951798
 GameObject:
   m_ObjectHideFlags: 0

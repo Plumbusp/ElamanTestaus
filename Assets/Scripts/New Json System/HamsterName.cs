@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HamsterName : MonoBehaviour, ISavable
 {
     private string name = "none";
-    [SerializeField] private InputField inputField;
+    [SerializeField] private TMP_InputField inputField;
     [SerializeField] private TMP_Text textForName;
 
     public void SaveData(ref DataObject data)
@@ -16,7 +16,7 @@ public class HamsterName : MonoBehaviour, ISavable
     }
     public void LoadData(DataObject data)
     {       
-        name = data.name;
+        SetName(data.name);
         Debug.Log(name + " loaded");
     }
 
