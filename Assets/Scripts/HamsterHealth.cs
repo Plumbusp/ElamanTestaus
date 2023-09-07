@@ -9,52 +9,32 @@ public class HamsterHealth: MonoBehaviour, ISavable
     [SerializeField] Slider healthBar;
     [SerializeField] TMP_Text textForHealth;
 
-    [SerializeField] private float _currentHealth = 11f;
+    private float _currentHealth;
 
-    void Start()
+    private HamsterHealth(float maxValue, Slider healthBar, TMP_Text textForHealth)
     {
-        //_currentHealth = 100f;
-        //healthBar.value = _currentHealth;
-        //textForHealth.text = _currentHealth.ToString();
-    }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log(_currentHealth);
-            HowMuchHealth();
-        }
-    }
-    public HamsterHealth(float maxValue, Slider healthBar, TMP_Text textForHealth)
-    {
-        
         this.maxValue = maxValue;
         this.healthBar = healthBar;
         this.textForHealth = textForHealth;
     }
 
-
     public void SaveData(ref DataObject data)
     { 
         data.health = _currentHealth;
-        //Debug.Log(_currentHealth + " saved");
     }
 
     public void LoadData(DataObject data)
     {
         SetHealth(data.health);
-        //Debug.Log(_currentHealth + " loaded");
     }
     
     public void HealthToDefault()
     {
-        //SetHealth(healthBar.maxValue);
+        SetHealth(healthBar.maxValue);
     }
 
     public void Decrease()
     {
-
-        //Debug.Log(_currentHealth + " in beg. decrease");
         if (!(_currentHealth <= healthBar.minValue))
         {
             SetHealth(_currentHealth -= 10f);
@@ -64,7 +44,6 @@ public class HamsterHealth: MonoBehaviour, ISavable
 
     public void Increase()
     {
-        //Debug.Log(_currentHealth + " in beg. increase");
         if (!(_currentHealth >= maxValue))
        {
             SetHealth(_currentHealth += 10f);
@@ -82,7 +61,6 @@ public class HamsterHealth: MonoBehaviour, ISavable
 
     private void HowMuchHealth()
     {
-        //Debug.Log("Current healt: " + _currentHealth);
         healthBar.value = _currentHealth;
         textForHealth.text = _currentHealth.ToString();
 

@@ -4,16 +4,27 @@ using TMPro;
 
 public class MenuLogic : MonoBehaviour
 {
-    [SerializeField] private UIManager playerData;
-
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject InputMenu;
+    [SerializeField] private GameObject foodChoiceMenu;
     [SerializeField] private GameObject gameMenu;
 
 
-    public void RestartGame()
+    public void StartChoice1()
     {
-        StartInputMenu();
+        StartFoodChoice();
+    }
+    public void StartChoice2()
+    {
+
+    }
+    public void StartChoice3()
+    {
+
+    }
+    public void StartChoice4()
+    {
+
     }
     public void StartGame()
     {
@@ -43,12 +54,19 @@ public class MenuLogic : MonoBehaviour
     {
         mainMenu.SetActive(false);
         gameMenu.SetActive(false);
+        foodChoiceMenu.SetActive(false);
         InputMenu.SetActive(true);
     }
     private void StartGameMenu()
     {
         mainMenu.SetActive(false);
         InputMenu.SetActive(false);
+        foodChoiceMenu.SetActive(false);
         gameMenu.SetActive(true);
+    }
+    private void StartFoodChoice()
+    {
+        mainMenu.SetActive(false);
+        foodChoiceMenu.SetActive(true);
     }
 }

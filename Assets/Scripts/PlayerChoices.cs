@@ -3,68 +3,57 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public static class PlayerChoices 
+public class PlayerChoices: MonoBehaviour, ISavable
 {
-   // private static string hamstersName;
-   // private static float hamstersHealth;
-    private static string food;
-    private static Image foodImage;
-    private static string weapon;
-    private static Image weaponImage;
-    private static string house;
-    private static Image houseImage;
-
+    public static PlayerChoices instance;
     public delegate void SetChoice(Sprite whichSprite);
     public static event SetChoice OnFoodChoiceSet;
     public static event SetChoice OnweaponChoiceSet;
     public static event SetChoice OnHousedChoiceSet;
-    // public static void HamsterName(string name)
-    //{
-    //    hamstersName = name;
-    //}
-    // public static void HamsterHealth(float health)
-    //{
-    //   hamstersHealth = health;
-    // }
-    public static void SetFood(string whichFood, Sprite whichSprite)
+
+    //private string food;
+    [SerializeField] private Image foodImage;
+    //private string weapon;
+    [SerializeField] private Image miraculousImage;
+    //private string house;
+    [SerializeField] private Image houseImage;
+
+    private void Awake()
     {
-        food = whichFood;
+        if(instance != null)
+        {
+            instance = null;
+        }
+        instance = this;
+    }
+    public void LoadData(DataObject data)
+    {
+        this.foodImage.sprite = data.foodSprite;
+        this.miraculousImage.sprite = data.miraculousSprite;
+        this.houseImage.sprite = data.houseSprite;
+    }
+
+    public void SaveData(ref DataObject data)
+    {
+        data.foodSprite = this.foodImage.sprite;
+        data.miraculousSprite = this.miraculousImage.sprite;
+        data.houseSprite = this.houseImage.sprite;
+    }
+
+    public void SetFood(Sprite whichSprite)
+    {
         foodImage.sprite = whichSprite;
         OnFoodChoiceSet?.Invoke(whichSprite);
+        Debug.Log("food choisen");
     }
-    public static void SetWeapon(string whichWeapon, Sprite whichSprite)
+    public void SetWeapon(Sprite whichSprite)
     {
-        weapon = whichWeapon;
-        weaponImage.sprite = whichSprite;
+        miraculousImage.sprite = whichSprite;
         OnweaponChoiceSet?.Invoke(whichSprite);
     }
-    public static void SetHouse(string whichHouse, Sprite whichSprite)
+    public void SetHouse( Sprite whichSprite)
     {
-        house = whichHouse;
         houseImage.sprite = whichSprite;
         OnHousedChoiceSet?.Invoke(whichSprite);
     }
-
-
-    //public static string SetName()
-    //{
-    //    return hamstersName;
-    //}
-    //public static float GetHealth()
-    // {
-    //    return hamstersHealth;
-    //}
-     public static string GetFood()
-    {
-        return food;
-    }
-    public static string GetWeapon()
-    {
-        return weapon;
-    }
-    public static string GetHouse()
-    {
-        return house;
-    }
-
 }

@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class ImageChanger : MonoBehaviour
 {
-    [SerializeField] private Texture happyPhoto;
-    [SerializeField] private Texture neutralPhoto;
-    [SerializeField] private Texture sadPhoto;
-    [SerializeField] private RawImage image;
+    [SerializeField] private Sprite happyPhoto;
+    [SerializeField] private Sprite neutralPhoto;
+    [SerializeField] private Sprite sadPhoto;
+    [SerializeField] private Image image;
 
     public static ImageChanger instance;
     private Condition _condition;
@@ -30,13 +30,13 @@ public class ImageChanger : MonoBehaviour
         switch (_condition)
         {
             case Condition.happy:
-                image.texture = happyPhoto;
+                image.sprite = happyPhoto;
                 break;
             case Condition.neutral:
-                image.texture = neutralPhoto;
+                image.sprite = neutralPhoto;
                 break;
             case Condition.sad:
-                image.texture = sadPhoto;
+                image.sprite = sadPhoto;
                 break;
             default:
                 break;
