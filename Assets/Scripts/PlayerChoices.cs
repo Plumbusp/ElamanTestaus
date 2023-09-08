@@ -11,48 +11,72 @@ public class PlayerChoices: MonoBehaviour, ISavable
     public static event SetChoice OnweaponChoiceSet;
     public static event SetChoice OnHousedChoiceSet;
 
-    //private string food;
+    private string food;
     [SerializeField] private Image foodImage;
-    //private string weapon;
+    private string miraculous;
     [SerializeField] private Image miraculousImage;
-    //private string house;
+    private string house;
     [SerializeField] private Image houseImage;
+
+    private string _foodFolderPath = "ChooseYourSuperFood";
+    private Dictionary<string, Sprite> foodImages = new Dictionary<string, Sprite>();
+    private Dictionary<string, Sprite> housesImages = new Dictionary<string, Sprite>();
+    private Dictionary<string, Sprite> miraculousImages = new Dictionary<string, Sprite>();
 
     private void Awake()
     {
-        if(instance != null)
+        if (instance != null)
         {
-            instance = null;
+            Destroy(this);
         }
         instance = this;
+        DontDestroyOnLoad(this);
+
+        foodImages.Add("eggplant", Resources.Load<Sprite>(_foodFolderPath + "/Food_eggplant"));
+        foodImages.Add("banana", Resources.Load<Sprite>(_foodFolderPath + "/Food_banana"));
+        foodImages.Add("sushie", Resources.Load<Sprite>(_foodFolderPath + "/Food_sushi"));
+        foodImages.Add("cucumber", Resources.Load<Sprite>(_foodFolderPath + "/Food_cucumber"));
+
     }
     public void LoadData(DataObject data)
     {
-        this.foodImage.sprite = data.foodSprite;
-        this.miraculousImage.sprite = data.miraculousSprite;
-        this.houseImage.sprite = data.houseSprite;
+        foodImage.sprite = null;
+        miraculousImage.sprite = null;
+        houseImage.sprite = null;
+
+        food = data.food;
+        miraculous = data.miraculous;
+        house = data.house;
+
+        if (foodImages.ContainsKey(food.ToLower()))
+        {
+           foodImage.sprite = foodImages[food.ToLower()];
+        }
+        
     }
 
     public void SaveData(ref DataObject data)
     {
-        data.foodSprite = this.foodImage.sprite;
-        data.miraculousSprite = this.miraculousImage.sprite;
-        data.houseSprite = this.houseImage.sprite;
+        data.food = this.food;
+        data.miraculous = this.miraculous;
+        data.house = this.house;
     }
 
-    public void SetFood(Sprite whichSprite)
+    public void SetFood(Sprite whichSprite, string whichFood)
     {
+        food = whichFood;
         foodImage.sprite = whichSprite;
         OnFoodChoiceSet?.Invoke(whichSprite);
-        Debug.Log("food choisen");
     }
-    public void SetWeapon(Sprite whichSprite)
+    public void SetMiraculous(Sprite whichSprite, string whichMiraculous)
     {
+        miraculous = whichMiraculous;
         miraculousImage.sprite = whichSprite;
         OnweaponChoiceSet?.Invoke(whichSprite);
     }
-    public void SetHouse( Sprite whichSprite)
+    public void SetHouse( Sprite whichSprite, string whichHouse)
     {
+        house = whichHouse;
         houseImage.sprite = whichSprite;
         OnHousedChoiceSet?.Invoke(whichSprite);
     }

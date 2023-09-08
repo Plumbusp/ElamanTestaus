@@ -25,7 +25,7 @@ public class HamsterName : MonoBehaviour, ISavable
     }
     private void SetName(string name)
     {
-        this.name = "'s name: " + name;
-        textForName.text = this.name;
+        this.name = name;
+        textForName.text = "Hamster's name: " + this.name;
     }
 }

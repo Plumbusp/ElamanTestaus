@@ -9,20 +9,22 @@ public class DataObject
 {
     public string name;
     public float health;
-    public Sprite foodSprite;
-    public Sprite houseSprite;
-    public Sprite miraculousSprite;
-    public Image[] rodentType;
+    public string food;
+    public string house;
+    public string miraculous;
+    /*
     public enum RodentType
     {
         hamster,
         rat,
         mouse
     }
-    public RodentType theRodentType;
+    */
     public DataObject()
     {
-        theRodentType = RodentType.hamster;
+        food = string.Empty;
+        house = string.Empty;
+        miraculous = string.Empty;
         name = "some name";
         health = 100;
     }

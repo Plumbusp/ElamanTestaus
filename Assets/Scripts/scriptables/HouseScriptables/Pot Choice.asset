@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccc439d22c4add64e8eb1506245368cb, type: 3}
-  m_Name: SushieChoice
+  m_Script: {fileID: 11500000, guid: d787f23355c4f604b862de50d0a15854, type: 3}
+  m_Name: Pot Choice
   m_EditorClassIdentifier: 
-  choiceType: 0
-  foodType: 1
-  choiceSprite: {fileID: 0}
+  choiceType: 2
+  houseType: 0
+  choiceSprite: {fileID: 21300000, guid: 9accc513ab63a6d49a4bc79c2ea9f184, type: 3}

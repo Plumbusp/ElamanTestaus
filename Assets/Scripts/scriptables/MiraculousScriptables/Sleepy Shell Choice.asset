@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccc439d22c4add64e8eb1506245368cb, type: 3}
-  m_Name: SushieChoice
+  m_Script: {fileID: 11500000, guid: cb91c8c3a216b8c449865aaaeb3f46d4, type: 3}
+  m_Name: Sleepy Shell Choice
   m_EditorClassIdentifier: 
-  choiceType: 0
-  foodType: 1
+  choiceType: 1
+  miraculousType: 0
   choiceSprite: {fileID: 0}

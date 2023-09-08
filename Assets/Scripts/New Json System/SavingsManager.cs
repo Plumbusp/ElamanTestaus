@@ -61,6 +61,7 @@ public class SavingsManager : MonoBehaviour
         {
             savableObject.LoadData(dataObject);
         }
+        SaveData();
     }
 
     private List<ISavable> FindAllISavableObjects()

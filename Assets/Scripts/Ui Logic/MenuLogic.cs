@@ -7,6 +7,8 @@ public class MenuLogic : MonoBehaviour
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject InputMenu;
     [SerializeField] private GameObject foodChoiceMenu;
+    [SerializeField] private GameObject houseChoiceMenu;
+    [SerializeField] private GameObject miraculousChoiceMenu;
     [SerializeField] private GameObject gameMenu;
 
 
@@ -16,15 +18,15 @@ public class MenuLogic : MonoBehaviour
     }
     public void StartChoice2()
     {
-
+        StartHouseChoice();
     }
     public void StartChoice3()
     {
-
+        StartMiraculousChoice();
     }
     public void StartChoice4()
     {
-
+        StartInputMenu();
     }
     public void StartGame()
     {
@@ -67,6 +69,19 @@ public class MenuLogic : MonoBehaviour
     private void StartFoodChoice()
     {
         mainMenu.SetActive(false);
+        InputMenu.SetActive(false);
+        houseChoiceMenu.SetActive(false);
         foodChoiceMenu.SetActive(true);
+    }
+    private void StartHouseChoice()
+    {
+        mainMenu.SetActive(false);
+        foodChoiceMenu.SetActive(false);
+        InputMenu.SetActive(false);
+
+    }
+    private void StartMiraculousChoice()
+    {
+
     }
 }
