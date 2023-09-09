@@ -3,79 +3,67 @@ using UnityEngine.UI;
 using TMPro;
 using System.IO;
 
-public class HamsterHealth: SavingsController
+public class HamsterHealth: MonoBehaviour, ISavable
 {
-    public string health;
-    string healthPath;
-
-    private float _maxValue;
-    private Slider _healthBar;
-    private TMP_Text _textForHealth;
+    [SerializeField] float maxValue;
+    [SerializeField] Slider healthBar;
+    [SerializeField] TMP_Text textForHealth;
 
     private float _currentHealth;
 
-    public HamsterHealth(float maxValue, Slider healthBar, TMP_Text textForHealth)
+    private HamsterHealth(float maxValue, Slider healthBar, TMP_Text textForHealth)
     {
-        this._maxValue = maxValue;
-        this._healthBar = healthBar;
-        this._textForHealth = textForHealth;
-        healthPath = CreatePath("health.txt");
+        this.maxValue = maxValue;
+        this.healthBar = healthBar;
+        this.textForHealth = textForHealth;
     }
 
-    public void SaveHealth()
-    {
-        SaveData(healthPath, _currentHealth.ToString()); // save health  
+    public void SaveData(ref DataObject data)
+    { 
+        data.health = _currentHealth;
     }
 
-    public string LoadHealth()
+    public void LoadData(DataObject data)
     {
-        if(LoadData(healthPath)== null)
-        {
-            HealthToDefault();
-            return _currentHealth.ToString();
-        }
-        float health = float.Parse(LoadData(healthPath));
-        SetHealth(health);  // set health to saved health( it also could be null). Convert returned string to float for health.
-        return _currentHealth.ToString();
+        SetHealth(data.health);
     }
     
     public void HealthToDefault()
     {
-        SetHealth(_healthBar.maxValue);
+        SetHealth(healthBar.maxValue);
     }
 
     public void Decrease()
     {
-        if (!(_currentHealth <= _healthBar.minValue))
+        if (!(_currentHealth <= healthBar.minValue))
         {
             SetHealth(_currentHealth -= 10f);
             HowMuchHealth();
-        }
+       }
     }
 
     public void Increase()
     {
-        if (!(_currentHealth >= _maxValue))
-        {
+        if (!(_currentHealth >= maxValue))
+       {
             SetHealth(_currentHealth += 10f);
             HowMuchHealth();
         }
     }
 
-    private void SetHealth(float amount)
+    private void SetHealth(float amount) 
     {
         _currentHealth = amount;
-        _healthBar.value = _currentHealth;
-        _textForHealth.text = _currentHealth.ToString();
+        healthBar.value = _currentHealth;
+        textForHealth.text = _currentHealth.ToString();
         HowMuchHealth();
-    }
-    private float GetCurrentHealth()
-    {
-        return _currentHealth;
     }
 
     private void HowMuchHealth()
     {
+        healthBar.value = _currentHealth;
+        textForHealth.text = _currentHealth.ToString();
+
         if (_currentHealth >= 80f)
         {
             ImageChanger.instance.ChangeConditionTo(ImageChanger.Condition.happy);
@@ -99,5 +87,4 @@ public class HamsterHealth: SavingsController
             LoadHealth();
         }
     */
-
 }

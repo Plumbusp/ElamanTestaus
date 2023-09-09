@@ -1,42 +1,31 @@
 using UnityEngine;
 using System.IO;
 using TMPro;
+using UnityEngine.UI;
 
-public class HamsterName : SavingsController
+public class HamsterName : MonoBehaviour, ISavable
 {
-    string hamsterName;
-    string namePath;
-    TMP_Text _textForName;
-    
-    public HamsterName(TMP_Text textForName)
+    private string name = "none";
+    [SerializeField] private TMP_InputField inputField;
+    [SerializeField] private TMP_Text textForName;
+
+    public void SaveData(ref DataObject data)
     {
-        _textForName = textForName;
-        namePath = CreatePath("name.txt");
+        data.name = name;
     }
-    
-    public void SaveName(string nameToSave)
+    public void LoadData(DataObject data)
+    {       
+        SetName(data.name);
+    }
+
+    public void SetNameThroughtInput()
     {
-        SaveData(namePath, nameToSave);
+        SetName(inputField.text);
+        inputField.text = "";
     }
-    public string LoadName()
-    {
-        if(LoadData(namePath) == null)
-        {
-            SetName("");
-            return " ";
-        }
-        hamsterName = LoadData(namePath);
-        SetName(hamsterName);
-        return hamsterName;
-    }
-    
     private void SetName(string name)
     {
-        this.hamsterName = "Hamsters's name: " + name;
-        _textForName.text = this.hamsterName;
-    }
-    public void DiscardName()
-    {
-        DiscardData(namePath);
+        this.name = name;
+        textForName.text = "Hamster's name: " + this.name;
     }
 }
