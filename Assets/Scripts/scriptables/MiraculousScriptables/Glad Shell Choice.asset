@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choiceType: 1
   miraculousType: 0
-  choiceSprite: {fileID: 0}
+  choiceSprite: {fileID: 21300000, guid: 4144c63b523ec1741b6df5207b5dd73c, type: 3}

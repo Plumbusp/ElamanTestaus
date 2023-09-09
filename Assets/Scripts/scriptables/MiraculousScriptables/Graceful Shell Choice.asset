@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Graceful Shell Choice
   m_EditorClassIdentifier: 
   choiceType: 1
-  miraculousType: 0
-  choiceSprite: {fileID: 0}
+  miraculousType: 1
+  choiceSprite: {fileID: 21300000, guid: f3fde7d8ef26b0a40b2bb5d6f92157e5, type: 3}

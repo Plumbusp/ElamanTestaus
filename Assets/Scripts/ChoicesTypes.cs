@@ -19,7 +19,9 @@ public static class ChoicesTypes
     public enum MiraculousType
     {
         blueShell,
-        whiteShell
+        whiteShell,
+        brownShell,
+        blackShell
     }
     public enum HouseType
     {

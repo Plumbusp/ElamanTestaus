@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Sleepy Shell Choice
   m_EditorClassIdentifier: 
   choiceType: 1
-  miraculousType: 0
-  choiceSprite: {fileID: 0}
+  miraculousType: 2
+  choiceSprite: {fileID: 21300000, guid: f227fb1d2ee5c174fbb8e3f5cdb05576, type: 3}

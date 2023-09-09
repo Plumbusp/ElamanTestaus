@@ -57,6 +57,7 @@ public class MenuLogic : MonoBehaviour
         mainMenu.SetActive(false);
         gameMenu.SetActive(false);
         foodChoiceMenu.SetActive(false);
+        miraculousChoiceMenu.SetActive(false);
         InputMenu.SetActive(true);
     }
     private void StartGameMenu()
@@ -78,10 +79,15 @@ public class MenuLogic : MonoBehaviour
         mainMenu.SetActive(false);
         foodChoiceMenu.SetActive(false);
         InputMenu.SetActive(false);
+        houseChoiceMenu.SetActive(true);
 
     }
     private void StartMiraculousChoice()
     {
-
+        mainMenu.SetActive(false);
+        foodChoiceMenu.SetActive(false);
+        houseChoiceMenu.SetActive(false);
+        InputMenu.SetActive(false);
+        miraculousChoiceMenu.SetActive(true);
     }
 }

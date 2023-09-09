@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Intimidating Shell CHoice
   m_EditorClassIdentifier: 
   choiceType: 1
-  miraculousType: 0
-  choiceSprite: {fileID: 0}
+  miraculousType: 3
+  choiceSprite: {fileID: 21300000, guid: b3f92a231884dae40bc203c09dff96eb, type: 3}
