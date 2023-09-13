@@ -4,14 +4,43 @@ using TMPro;
 
 public class MenuLogic : MonoBehaviour
 {
+    [SerializeField] private GameObject initialMenu;
     [SerializeField] private GameObject mainMenu;
+    [SerializeField] private Button continueButton;
     [SerializeField] private GameObject InputMenu;
     [SerializeField] private GameObject foodChoiceMenu;
     [SerializeField] private GameObject houseChoiceMenu;
     [SerializeField] private GameObject miraculousChoiceMenu;
     [SerializeField] private GameObject gameMenu;
+    public Text text;
 
-
+    private void OnEnable()
+    {
+        continueButton.onClick.AddListener(StartGameMenu);
+    }
+    private void OnDisable()
+    {
+        continueButton.onClick.RemoveListener(StartGameMenu);
+    }
+    public void StartMainMenu()
+    {
+        initialMenu.SetActive(false);
+        gameMenu.SetActive(false);
+        InputMenu.SetActive(false);
+        mainMenu.SetActive(true);
+        if(SavingsManager.Instance.HasSavedData())
+        {
+            continueButton.gameObject.SetActive(true);
+            text.text = "HAS saved data";
+        }
+        else
+        {
+            continueButton.gameObject.SetActive(false);
+            mainMenu.TryGetComponent<VerticalLayoutGroup>(out VerticalLayoutGroup layoutGroup);
+            layoutGroup.transform.position = layoutGroup.transform.position;
+            text.text = "DOSENT HAS saved data";
+        }
+    }
     public void StartChoice1()
     {
         StartFoodChoice();
@@ -28,7 +57,7 @@ public class MenuLogic : MonoBehaviour
     {
         StartInputMenu();
     }
-    public void StartGame()
+    public void StartMainGame()
     {
         StartGameMenu();
     }
@@ -40,18 +69,9 @@ public class MenuLogic : MonoBehaviour
     {
         Application.Quit();
     }
-    public void GoToMainMenu()
-    {
-        StartMainMenu();
-    }
 
 
-    private void StartMainMenu()
-    {
-        gameMenu.SetActive(false);
-        InputMenu.SetActive(false);
-        mainMenu.SetActive(true);
-    }
+
     private void StartInputMenu()
     {
         mainMenu.SetActive(false);

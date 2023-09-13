@@ -63,6 +63,19 @@ public class SavingsManager : MonoBehaviour
         }
         SaveData();
     }
+    public bool HasSavedData()
+    {
+        DataObject dataObject = fileHandler.Load();
+        DataObject initialDataObject = new DataObject();
+        if (dataObject.Equals(initialDataObject) || dataObject == null)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
 
     private List<ISavable> FindAllISavableObjects()
     {

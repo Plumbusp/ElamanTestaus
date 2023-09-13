@@ -11,12 +11,12 @@ public class HamsterHealth: MonoBehaviour, ISavable
 
     private float _currentHealth;
 
-    private HamsterHealth(float maxValue, Slider healthBar, TMP_Text textForHealth)
-    {
-        this.maxValue = maxValue;
-        this.healthBar = healthBar;
-        this.textForHealth = textForHealth;
-    }
+    //private HamsterHealth(float maxValue, Slider healthBar, TMP_Text textForHealth)
+    //{
+    //    this.maxValue = maxValue;
+    //    this.healthBar = healthBar;
+    //    this.textForHealth = textForHealth;
+    //}
 
     public void SaveData(ref DataObject data)
     { 
