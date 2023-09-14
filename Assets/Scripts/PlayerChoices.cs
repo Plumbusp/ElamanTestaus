@@ -42,7 +42,7 @@ public class PlayerChoices: MonoBehaviour, ISavable
         miraculousImages.Add("whiteshell", Resources.Load<Sprite>(_miraculousFolderPath + "/Seashell_white"));
         miraculousImages.Add("blueshell", Resources.Load<Sprite>(_miraculousFolderPath + "/Seashell_blue"));
         miraculousImages.Add("blackshell", Resources.Load<Sprite>(_miraculousFolderPath + "/Seashell_black"));
-        miraculousImages.Add("brownshell", Resources.Load<Sprite>(_miraculousFolderPath + "/Seashell_browm"));
+        miraculousImages.Add("brownshell", Resources.Load<Sprite>(_miraculousFolderPath + "/Seashell_brown"));
 
         housesImages.Add("can", Resources.Load<Sprite>(_houseFolderPath + "/House_can"));
         housesImages.Add("box", Resources.Load<Sprite>(_houseFolderPath + "/House_box"));

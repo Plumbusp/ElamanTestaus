@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class HamsterName : MonoBehaviour, ISavable
 {
-    private string name = "none";
+    private string hamsterName = "none";
     [SerializeField] private TMP_InputField inputField;
     [SerializeField] private TMP_Text textForName;
 
     public void SaveData(ref DataObject data)
     {
-        data.name = name;
+        data.name = hamsterName;
     }
     public void LoadData(DataObject data)
     {       
@@ -25,7 +25,7 @@ public class HamsterName : MonoBehaviour, ISavable
     }
     private void SetName(string name)
     {
-        this.name = name;
-        textForName.text = "Hamster's name: " + this.name;
+        this.hamsterName = name;
+        textForName.text = "Hamster's name: " + this.hamsterName;
     }
 }

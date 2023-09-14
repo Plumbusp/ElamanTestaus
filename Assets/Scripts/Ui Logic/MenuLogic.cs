@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+using System.Collections.Generic;
 
 public class MenuLogic : MonoBehaviour
 {
@@ -12,15 +12,22 @@ public class MenuLogic : MonoBehaviour
     [SerializeField] private GameObject houseChoiceMenu;
     [SerializeField] private GameObject miraculousChoiceMenu;
     [SerializeField] private GameObject gameMenu;
+
+    Dictionary<string, GameObject> menus = new Dictionary<string, GameObject>();
     public Text text;
 
     private void OnEnable()
     {
-        continueButton.onClick.AddListener(StartGameMenu);
+        menus.Add(initialMenu.name, initialMenu);
+        menus.Add(mainMenu.name, mainMenu);
+        menus.Add(InputMenu.name, InputMenu);
+        menus.Add(foodChoiceMenu.name, foodChoiceMenu);
+        menus.Add(houseChoiceMenu.name, houseChoiceMenu);
+        menus.Add(miraculousChoiceMenu.name, miraculousChoiceMenu);
+        menus.Add(gameMenu.name, gameMenu);
     }
     private void OnDisable()
     {
-        continueButton.onClick.RemoveListener(StartGameMenu);
     }
     public void StartMainMenu()
     {
@@ -41,73 +48,43 @@ public class MenuLogic : MonoBehaviour
             text.text = "DOSENT HAS saved data";
         }
     }
+
     public void StartChoice1()
     {
-        StartFoodChoice();
+        StartSomeMenu(foodChoiceMenu);
     }
     public void StartChoice2()
     {
-        StartHouseChoice();
+        StartSomeMenu(houseChoiceMenu);
     }
     public void StartChoice3()
     {
-        StartMiraculousChoice();
+        StartSomeMenu(miraculousChoiceMenu);
     }
     public void StartChoice4()
     {
-        StartInputMenu();
+        StartSomeMenu(InputMenu);
     }
-    public void StartMainGame()
+    public void StartGameMenu()
     {
-        StartGameMenu();
-    }
-    public void ContinueGame()
-    {
-        StartGameMenu();
+        StartSomeMenu(gameMenu);
     }
     public void QuitGame()
     {
         Application.Quit();
     }
-
-
-
-    private void StartInputMenu()
+    private void StartSomeMenu(GameObject menu)
     {
-        mainMenu.SetActive(false);
-        gameMenu.SetActive(false);
-        foodChoiceMenu.SetActive(false);
-        miraculousChoiceMenu.SetActive(false);
-        InputMenu.SetActive(true);
-    }
-    private void StartGameMenu()
-    {
-        mainMenu.SetActive(false);
-        InputMenu.SetActive(false);
-        foodChoiceMenu.SetActive(false);
-        gameMenu.SetActive(true);
-    }
-    private void StartFoodChoice()
-    {
-        mainMenu.SetActive(false);
-        InputMenu.SetActive(false);
-        houseChoiceMenu.SetActive(false);
-        foodChoiceMenu.SetActive(true);
-    }
-    private void StartHouseChoice()
-    {
-        mainMenu.SetActive(false);
-        foodChoiceMenu.SetActive(false);
-        InputMenu.SetActive(false);
-        houseChoiceMenu.SetActive(true);
-
-    }
-    private void StartMiraculousChoice()
-    {
-        mainMenu.SetActive(false);
-        foodChoiceMenu.SetActive(false);
-        houseChoiceMenu.SetActive(false);
-        InputMenu.SetActive(false);
-        miraculousChoiceMenu.SetActive(true);
+        foreach (KeyValuePair<string, GameObject> kvp in menus)
+        {
+            if (kvp.Value == menu)
+            {
+                kvp.Value.SetActive(true);
+            }
+            else
+            {
+                kvp.Value.SetActive(false);
+            }
+        }
     }
 }

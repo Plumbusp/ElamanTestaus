@@ -36,14 +36,15 @@ public class SavingsManager : MonoBehaviour
 
         if(dataObject == null)
         {
-            dataObject = new DataObject();
+            NewGame();
             Debug.Log("No Saved Data Was Found");
+            return;
         }
         foreach(ISavable savableObject in savableObjects)
         {
             savableObject.LoadData(dataObject);
         }     
-        //Debug.Log(dataObject.name + dataObject.health.ToString() + "LOADED");
+        Debug.Log(dataObject.name + dataObject.health.ToString() + "LOADED");
     }
     public void SaveData()
     {
@@ -56,18 +57,17 @@ public class SavingsManager : MonoBehaviour
     }
     public void NewGame()
     {
+        fileHandler.DiscardData();
         dataObject = new DataObject();
         foreach (ISavable savableObject in savableObjects)
         {
             savableObject.LoadData(dataObject);
         }
-        SaveData();
     }
     public bool HasSavedData()
     {
-        DataObject dataObject = fileHandler.Load();
-        DataObject initialDataObject = new DataObject();
-        if (dataObject.Equals(initialDataObject) || dataObject == null)
+        dataObject = fileHandler.Load();
+        if(dataObject == null)
         {
             return false;
         }
