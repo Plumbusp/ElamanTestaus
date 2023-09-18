@@ -1,0 +1,12 @@
+{
+    "name": "",
+    "health": 90.0,
+    "food": "sushie",
+    "house": "box",
+    "miraculous": "blackShell",
+    "BoughtItems": [
+        "old tv",
+        "old tv",
+        "Green Nice Sofa"
+    ]
+}

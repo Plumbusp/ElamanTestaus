@@ -12,6 +12,7 @@ public class MenuLogic : MonoBehaviour
     [SerializeField] private GameObject houseChoiceMenu;
     [SerializeField] private GameObject miraculousChoiceMenu;
     [SerializeField] private GameObject gameMenu;
+    [SerializeField] private GameObject shopMenu;
 
     Dictionary<string, GameObject> menus = new Dictionary<string, GameObject>();
     public Text text;
@@ -25,6 +26,7 @@ public class MenuLogic : MonoBehaviour
         menus.Add(houseChoiceMenu.name, houseChoiceMenu);
         menus.Add(miraculousChoiceMenu.name, miraculousChoiceMenu);
         menus.Add(gameMenu.name, gameMenu);
+        menus.Add(shopMenu.name, shopMenu);
     }
     private void OnDisable()
     {
@@ -68,6 +70,10 @@ public class MenuLogic : MonoBehaviour
     public void StartGameMenu()
     {
         StartSomeMenu(gameMenu);
+    }
+    public void StartShopMenu()
+    {
+        StartSomeMenu(shopMenu);
     }
     public void QuitGame()
     {

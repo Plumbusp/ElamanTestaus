@@ -8,15 +8,15 @@ using UnityEngine.UI;
 public class MiraculousChoiceHandler : MonoBehaviour
 {
     [SerializeField] private Image image;
-    [SerializeField] private TMP_Text name;
+    [SerializeField] private TMP_Text miraculousName;
     [SerializeField] private MiraculousChoiceScriptable choice;
-    private ChoicesTypes.MiraculousType _miraculousType;
+    private TypesNames.MiraculousType _miraculousType;
 
     private void Start()
     {
         _miraculousType = choice.miraculousType;
         image.sprite = choice.choiceSprite;
-        name.text = choice.miraculousType.ToString();
+        miraculousName.text = choice.miraculousType.ToString();
 
         gameObject.GetComponent<Button>().onClick.AddListener(SetChoice);
     }

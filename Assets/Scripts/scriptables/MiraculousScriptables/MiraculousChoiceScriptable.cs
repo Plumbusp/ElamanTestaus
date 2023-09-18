@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "new miraculous choice", menuName = "Choices For Hamster/Some Miraculous Choice")]
 public class MiraculousChoiceScriptable : ScriptableObject
 {
-    [HideInInspector] public ChoicesTypes.ChoiceType choiceType = ChoicesTypes.ChoiceType.miraculous;
-    public ChoicesTypes.MiraculousType miraculousType;
+    [HideInInspector] public TypesNames.ChoiceType choiceType = TypesNames.ChoiceType.miraculous;
+    public TypesNames.MiraculousType miraculousType;
     public Sprite choiceSprite;
 }

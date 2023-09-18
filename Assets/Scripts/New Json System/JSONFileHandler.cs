@@ -49,7 +49,7 @@ public class JSONFileHandler
             {
                 using (StreamWriter writer = new StreamWriter(stream))
                 {
-                    string dataToSave = JsonUtility.ToJson(data);
+                    string dataToSave = JsonUtility.ToJson(data, true);
                     writer.Write(dataToSave);
                 }
             }

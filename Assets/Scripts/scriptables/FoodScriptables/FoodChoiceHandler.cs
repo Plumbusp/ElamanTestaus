@@ -9,16 +9,16 @@ using System;
 public class FoodChoiceHandler : MonoBehaviour
 {
     [SerializeField] private Image image;
-    [SerializeField] private TMP_Text name;
+    [SerializeField] private TMP_Text foodName;
     [SerializeField] private FoodChoiceScriptable choice;
 
-    private ChoicesTypes.FoodType _foodType;
+    private TypesNames.FoodType _foodType;
 
     private void Start()
     {
         _foodType = choice.foodType;
         image.sprite = choice.choiceSprite;
-        name.text = choice.foodType.ToString();
+        foodName.text = choice.foodType.ToString();
         
         gameObject.GetComponent<Button>().onClick.AddListener(SetChoice);
     }

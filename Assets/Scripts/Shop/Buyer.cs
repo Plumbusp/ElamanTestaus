@@ -8,18 +8,15 @@ public class Buyer : MonoBehaviour
     float money = 1000f;
     private void OnEnable()
     {
-
+        text.text = "money:" + money.ToString();
     }
-    private void BuyItem()
+    public void BuyItem()
     {
         GameObject buttonRef = GameObject.FindGameObjectWithTag("EventSystem").GetComponent<EventSystem>().currentSelectedGameObject;
         if(buttonRef != null)
         {
-            if(!buttonRef.GetComponent<ItemInfo>().isBought)
-            {
-                money = buttonRef.GetComponent<ItemInfo>().Buy(money);
-                text.text = "money:" + money.ToString();
-            }
+             money = buttonRef.GetComponent<ItemInfo>().Buy(money);
+             text.text = "money:" + money.ToString();
         }
 
     }

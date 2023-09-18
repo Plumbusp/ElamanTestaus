@@ -13,6 +13,7 @@ public class DataObject
     public string food;
     public string house;
     public string miraculous;
+    public List<string> BoughtItems;
     /*
     public enum RodentType
     {
@@ -23,6 +24,7 @@ public class DataObject
     */
     public DataObject()
     {
+        BoughtItems = new List<string>();
         food = string.Empty;
         house = string.Empty;
         miraculous = string.Empty;
