@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
-public class BuyerManager : MonoBehaviour, ISavable
+public class ShopManager : MonoBehaviour, ISavable
 {
     //[SerializeField] private Transform sofaDisplacement;
     //[SerializeField] private Transform chairDispalcement;
     //[SerializeField] private Transform tableDisplacement;
     //[SerializeField] private Transform fridgeDispacement;
 
-    public delegate void SettingItemBought(string name);
-    public static event SettingItemBought OnSetItemBought;
+    //public delegate void SettingItemBought(string name);
+    //public static event SettingItemBought OnSetItemBought;
 
     [SerializeField] private Image sofa;
     [SerializeField] private Image chair;
@@ -23,6 +23,15 @@ public class BuyerManager : MonoBehaviour, ISavable
 
     private List<string> BoughtItems = new List<string>();
     private List<Image> LittleRoomsImages = new List<Image>();
+    public List<ItemInfo> Items = new List<ItemInfo>();
+
+    //void Start()
+    //{
+    //    foreach(ItemInfo info in test)
+    //    {
+    //        Debug.Log(info.itemName + info.isBought);
+    //    }
+    //}
 
     private void OnEnable()
     {
@@ -31,6 +40,7 @@ public class BuyerManager : MonoBehaviour, ISavable
     private void OnDisable()
     {
         ItemInfo.OnItemBought -= PlaceBrandNewItem;
+        BoughtItems = null;
     }
     private void Awake()
     {
@@ -44,6 +54,10 @@ public class BuyerManager : MonoBehaviour, ISavable
     }
     public void LoadData(DataObject data)
     {
+        foreach(ItemInfo item in Items)
+        {
+            item.SetUnbought();
+        }
         foreach(Image image in LittleRoomsImages)
         {
             image.sprite = null;
@@ -51,7 +65,13 @@ public class BuyerManager : MonoBehaviour, ISavable
         foreach(string itemName in data.BoughtItems)
         {
             this.BoughtItems.Add(itemName);
-            OnSetItemBought?.Invoke(itemName);
+            foreach (ItemInfo item in Items)
+            {
+                if(item.itemName == itemName)
+                {
+                    item.SetBought(itemName);
+                }
+            }
         }
     }
 

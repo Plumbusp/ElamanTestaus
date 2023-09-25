@@ -16,14 +16,6 @@ public class ItemInfo : MonoBehaviour, IBuyableItem
     public delegate void BuyngItem(string itemName, Sprite itemSprite, TypesNames.ItemType whichType);
     public static event BuyngItem OnItemBought;
 
-    private void OnEnable()
-    {
-        BuyerManager.OnSetItemBought += SetBought;
-    }
-    private void OnDisable()
-    {
-        BuyerManager.OnSetItemBought -= SetBought;
-    }
     private void Awake()
     {
         itemNameText.text = itemName;
@@ -48,7 +40,12 @@ public class ItemInfo : MonoBehaviour, IBuyableItem
         {
             MakeBought();
         }
-        return;
+    }
+    public void SetUnbought()
+    {
+        isBought = false;
+        GetComponent<Button>().enabled = true;
+        boughtCover.SetActive(false);
     }
     private void MakeBought()
     {

@@ -55,7 +55,7 @@ public class SavingsManager : MonoBehaviour
 
         fileHandler.Save(dataObject);
     }
-    public void NewGame()
+    private void NewGame()
     {
         fileHandler.DiscardData();
         dataObject = new DataObject();
