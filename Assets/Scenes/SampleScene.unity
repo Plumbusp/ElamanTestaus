@@ -694,9 +694,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 701089384}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 550.5, y: -156.8375}
   m_SizeDelta: {x: 213.8, y: 87.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &101990344
@@ -2509,9 +2509,9 @@ MonoBehaviour:
   carpet: {fileID: 1087613901}
   tv: {fileID: 546074698}
   Items:
-  - {fileID: 1211469542}
-  - {fileID: 1001177803}
-  - {fileID: 809053304}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &331805748
 GameObject:
   m_ObjectHideFlags: 0
@@ -5234,7 +5234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &701089384
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5464,9 +5464,9 @@ RectTransform:
   - {fileID: 810411954}
   m_Father: {fileID: 701089384}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 650.5, y: -227.56248}
   m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &740773504
@@ -6186,16 +6186,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 809053298}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c46ac43d2a3dfa4399f8682b719f377, type: 3}
+  m_Script: {fileID: 11500000, guid: 4bff8265a0798f44583292bdb064a06a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boughtCover: {fileID: 628698906}
-  price: 490
-  itemName: tv
-  itemType: 2
-  isBought: 0
+  itemInfo: {fileID: 11400000, guid: ef6271ab5639ae2468598bdb6e7153d8, type: 2}
   itemNameText: {fileID: 1969951218}
-  Image: {fileID: 1950851803}
+  image: {fileID: 1950851803}
+  boughtCover: {fileID: 628698906}
 --- !u!1 &810411953
 GameObject:
   m_ObjectHideFlags: 0
@@ -8031,16 +8028,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1001177797}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c46ac43d2a3dfa4399f8682b719f377, type: 3}
+  m_Script: {fileID: 11500000, guid: 4bff8265a0798f44583292bdb064a06a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boughtCover: {fileID: 1906158203}
-  price: 30
-  itemName: Cool tv
-  itemType: 2
-  isBought: 0
+  itemInfo: {fileID: 11400000, guid: 8e9c69eeee7f1c1409d1b7f078890bf9, type: 2}
   itemNameText: {fileID: 939892733}
-  Image: {fileID: 1101426231}
+  image: {fileID: 1101426231}
+  boughtCover: {fileID: 1906158203}
 --- !u!1 &1039361234
 GameObject:
   m_ObjectHideFlags: 0
@@ -9541,16 +9535,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1211469536}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c46ac43d2a3dfa4399f8682b719f377, type: 3}
+  m_Script: {fileID: 11500000, guid: 4bff8265a0798f44583292bdb064a06a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boughtCover: {fileID: 865128698}
-  price: 20
-  itemName: Cool sofa
-  itemType: 0
-  isBought: 0
+  itemInfo: {fileID: 11400000, guid: 0829fc40335c1d4499abbe01ae108869, type: 2}
   itemNameText: {fileID: 1094047613}
-  Image: {fileID: 475176820}
+  image: {fileID: 475176820}
+  boughtCover: {fileID: 865128698}
 --- !u!1 &1219241002
 GameObject:
   m_ObjectHideFlags: 0
@@ -9660,9 +9651,9 @@ RectTransform:
   - {fileID: 800069519}
   m_Father: {fileID: 701089384}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 550.5, y: -334.33746}
   m_SizeDelta: {x: 230, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1219299043
@@ -15225,9 +15216,9 @@ RectTransform:
   - {fileID: 850976858}
   m_Father: {fileID: 701089384}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 550.5, y: -393.6125}
   m_SizeDelta: {x: 130, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2123441974

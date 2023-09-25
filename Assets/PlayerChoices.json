@@ -1,0 +1,13 @@
+{
+    "name": "",
+    "health": 100.0,
+    "food": "sushie",
+    "house": "box",
+    "miraculous": "blackShell",
+    "BoughtItems": [
+        "TV",
+        "TV",
+        "Cool Sofa",
+        "Cool Sofa"
+    ]
+}

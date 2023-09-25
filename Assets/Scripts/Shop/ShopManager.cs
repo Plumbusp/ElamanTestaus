@@ -11,8 +11,8 @@ public class ShopManager : MonoBehaviour, ISavable
     //[SerializeField] private Transform tableDisplacement;
     //[SerializeField] private Transform fridgeDispacement;
 
-    //public delegate void SettingItemBought(string name);
-    //public static event SettingItemBought OnSetItemBought;
+    public delegate void SettingItemBought(string name);
+    public static event SettingItemBought OnSetItemBought;
 
     [SerializeField] private Image sofa;
     [SerializeField] private Image chair;
@@ -23,7 +23,7 @@ public class ShopManager : MonoBehaviour, ISavable
 
     private List<string> BoughtItems = new List<string>();
     private List<Image> LittleRoomsImages = new List<Image>();
-    public List<ItemInfo> Items = new List<ItemInfo>();
+    public List<ItemInfoScriptable> Items = new List<ItemInfoScriptable>();
 
     //void Start()
     //{
@@ -54,24 +54,14 @@ public class ShopManager : MonoBehaviour, ISavable
     }
     public void LoadData(DataObject data)
     {
-        foreach(ItemInfo item in Items)
-        {
-            item.SetUnbought();
-        }
         foreach(Image image in LittleRoomsImages)
         {
             image.sprite = null;
         }
-        foreach(string itemName in data.BoughtItems)
+        foreach(string boughtItemName in data.BoughtItems)
         {
-            this.BoughtItems.Add(itemName);
-            foreach (ItemInfo item in Items)
-            {
-                if(item.itemName == itemName)
-                {
-                    item.SetBought(itemName);
-                }
-            }
+            this.BoughtItems.Add(boughtItemName);
+            OnSetItemBought?.Invoke(boughtItemName);
         }
     }
 

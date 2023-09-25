@@ -1,57 +1,50 @@
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-[RequireComponent(typeof(Button))]
-public class ItemInfo : MonoBehaviour, IBuyableItem
+
+public class ItemInfo : MonoBehaviour
 {
-    public GameObject boughtCover;
-    public float price;
-    public string itemName;
-    public TypesNames.ItemType itemType;
-    [HideInInspector] public bool isBought;
+    [SerializeField] ItemInfoScriptable itemInfo;
     [SerializeField] private TMP_Text itemNameText;
-    [SerializeField] private Image Image;
-    private Sprite sprite;
+    [SerializeField] private Image image;
+    [SerializeField] private GameObject boughtCover;
 
     public delegate void BuyngItem(string itemName, Sprite itemSprite, TypesNames.ItemType whichType);
     public static event BuyngItem OnItemBought;
-
+    private void OnEnable()
+    {
+        if(itemInfo.isBought)
+        {
+            MakeBought();
+        }
+    }
     private void Awake()
     {
-        itemNameText.text = itemName;
-        sprite = Image.sprite;
+        itemNameText.text = itemInfo.itemName;
+        image.sprite = itemInfo.sprite;
     }
     public float Buy(float amountOfYourMoney)
     {
-        if(!isBought)
+        if (!itemInfo.isBought)
         {
-            if (amountOfYourMoney >= price)
+            if (amountOfYourMoney >= itemInfo.price)
             {
                 MakeBought();
-                return amountOfYourMoney - price;
+                OnItemBought.Invoke(itemInfo.itemName, itemInfo.sprite, itemInfo.itemType);
+                return amountOfYourMoney - itemInfo.price;
             }
         }
         return amountOfYourMoney;
     }
 
-    public void SetBought(string itemName)
+    public void MakeBought()
     {
-        if(this.itemName == itemName)
-        {
-            MakeBought();
-        }
-    }
-    public void SetUnbought()
-    {
-        isBought = false;
-        GetComponent<Button>().enabled = true;
-        boughtCover.SetActive(false);
-    }
-    private void MakeBought()
-    {
-        isBought = true;
+        itemInfo.SetBought();
         GetComponent<Button>().enabled = false;
         boughtCover.SetActive(true);
-        OnItemBought?.Invoke(itemName, sprite, itemType);  // Invoking event telling that some item is bought and specify that item with its name
+        OnItemBought.Invoke(itemInfo.itemName, itemInfo.sprite, itemInfo.itemType);
     }
+
 }
