@@ -1,9 +1,14 @@
 {
     "name": "",
-    "health": 70.0,
-    "money": 1000.0,
-    "food": "cucumber",
-    "house": "can",
-    "miraculous": "brownShell",
-    "BoughtItems": []
+    "health": 50.0,
+    "money": 150.0,
+    "food": "sushie",
+    "house": "box",
+    "miraculous": "blackShell",
+    "BoughtItems": [
+        "New TV",
+        "Modern carpet",
+        "Cool sofa",
+        "Old TV"
+    ]
 }

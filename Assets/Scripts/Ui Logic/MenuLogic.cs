@@ -31,6 +31,10 @@ public class MenuLogic : MonoBehaviour
     private void OnDisable()
     {
     }
+    public void StartInitialMenu()
+    {
+        StartSomeMenu(initialMenu);
+    }
     public void StartMainMenu()
     {
         initialMenu.SetActive(false);

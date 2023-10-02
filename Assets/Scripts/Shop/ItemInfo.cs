@@ -4,6 +4,7 @@ using TMPro;
 [RequireComponent(typeof(Button))]
 public class ItemInfo : MonoBehaviour
 {
+
     [SerializeField] private GameObject boughtCover;
     [SerializeField] private float price;
     public string itemName;
@@ -13,9 +14,6 @@ public class ItemInfo : MonoBehaviour
     [SerializeField] private TMP_Text itemPriceText;
     [SerializeField] private Image Image;
     private Sprite sprite;
-
-    public delegate void BuyngItem(string itemName, Sprite itemSprite, TypesNames.ItemType whichType);
-    public static event BuyngItem OnItemBought;
 
     private void Awake()
     {
@@ -51,6 +49,7 @@ public class ItemInfo : MonoBehaviour
         isBought = true;
         GetComponent<Button>().enabled = false;
         boughtCover.SetActive(true);
-        OnItemBought?.Invoke(itemName, sprite, itemType);  // Invoking event telling that some item is bought and specify that item with its name
+        ConstantItem.InvokOnItemBought(itemName, sprite, itemType);
+        //OnItemBought?.Invoke(itemName, sprite, itemType);  // Invoking event telling that some item is bought and specify that item with its name
     }
 }

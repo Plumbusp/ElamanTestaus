@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using TMPro;
 
 public class ShopManager : MonoBehaviour, ISavable
 {
-
+    [SerializeField] private TMP_Text test;
 
     [SerializeField] private Image sofa;
     [SerializeField] private Image chair;
@@ -22,11 +23,11 @@ public class ShopManager : MonoBehaviour, ISavable
 
     private void OnEnable()
     {
-        ItemInfo.OnItemBought += PlaceBrandNewItem;
+        ConstantItem.OnItemBought += PlaceBrandNewItem;
     }
     private void OnDisable()
     {
-        ItemInfo.OnItemBought -= PlaceBrandNewItem;
+        ConstantItem.OnItemBought -= PlaceBrandNewItem;
     }
     private void Awake()
     {
@@ -60,6 +61,7 @@ public class ShopManager : MonoBehaviour, ISavable
                 }
             }
         }
+        test.text = BoughtItems.Count.ToString();
     }
 
     public void SaveData(ref DataObject data)
@@ -69,7 +71,18 @@ public class ShopManager : MonoBehaviour, ISavable
 
     private void PlaceBrandNewItem(string whatIsItsName, Sprite sprite, TypesNames.ItemType whichType)
     {
-        BoughtItems.Add(whatIsItsName);
+        int i = 0;
+        foreach(string itemNamein in BoughtItems)
+        {
+            if(itemNamein == whatIsItsName)
+            {
+                i++;
+            }
+        }
+        if(i == 0)
+        {
+            BoughtItems.Add(whatIsItsName);
+        }
         switch (whichType)
         {
             case TypesNames.ItemType.carpet:
