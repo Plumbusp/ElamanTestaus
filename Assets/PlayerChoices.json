@@ -1,0 +1,9 @@
+{
+    "name": "",
+    "health": 70.0,
+    "money": 1000.0,
+    "food": "cucumber",
+    "house": "can",
+    "miraculous": "brownShell",
+    "BoughtItems": []
+}

@@ -42,17 +42,18 @@ public class JSONFileHandler
     }
     public void Save(DataObject data)
     {
-        CreateFile();
+        if (!File.Exists(filePath))
+        {
+            File.Create(filePath);
+        }
         try
         {
-            using (FileStream stream = new FileStream(filePath, FileMode.Create))
-            {
-                using (StreamWriter writer = new StreamWriter(stream))
-                {
-                    string dataToSave = JsonUtility.ToJson(data, true);
-                    writer.Write(dataToSave);
-                }
-            }
+             using (StreamWriter writer = new StreamWriter(filePath))
+             {
+                  string dataToSave = JsonUtility.ToJson(data, true);
+                  writer.Write(dataToSave);
+             }
+            
         }
         catch(Exception ex)
         {
@@ -67,11 +68,5 @@ public class JSONFileHandler
         }
        // return Load();
     }
-    private void CreateFile()
-    {
-        if (!File.Exists(filePath))
-        {
-            File.Create(filePath);
-        }
-    }
+
 }

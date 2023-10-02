@@ -47,7 +47,7 @@ public class MenuLogic : MonoBehaviour
             continueButton.gameObject.SetActive(false);
             mainMenu.TryGetComponent<VerticalLayoutGroup>(out VerticalLayoutGroup layoutGroup);
             layoutGroup.transform.position = layoutGroup.transform.position;
-            text.text = "DOSENT HAS saved data";
+            text.text = "DOESN'T HAVE saved data";
         }
     }
 

@@ -10,18 +10,12 @@ public class DataObject
 {
     public string name;
     public float health;
+    public float money;
     public string food;
     public string house;
     public string miraculous;
     public List<string> BoughtItems;
-    /*
-    public enum RodentType
-    {
-        hamster,
-        rat,
-        mouse
-    }
-    */
+
     public DataObject()
     {
         BoughtItems = new List<string>();
@@ -30,6 +24,7 @@ public class DataObject
         miraculous = string.Empty;
         name = "some name";
         health = 100;
+        money = 1000f;
     }
     public override bool Equals(object obj)
     {

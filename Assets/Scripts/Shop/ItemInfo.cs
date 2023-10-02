@@ -2,14 +2,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 [RequireComponent(typeof(Button))]
-public class ItemInfo : MonoBehaviour, IBuyableItem
+public class ItemInfo : MonoBehaviour
 {
-    public GameObject boughtCover;
-    public float price;
+    [SerializeField] private GameObject boughtCover;
+    [SerializeField] private float price;
     public string itemName;
     public TypesNames.ItemType itemType;
     [HideInInspector] public bool isBought;
     [SerializeField] private TMP_Text itemNameText;
+    [SerializeField] private TMP_Text itemPriceText;
     [SerializeField] private Image Image;
     private Sprite sprite;
 
@@ -20,6 +21,7 @@ public class ItemInfo : MonoBehaviour, IBuyableItem
     {
         itemNameText.text = itemName;
         sprite = Image.sprite;
+        itemPriceText.text = price.ToString();
     }
     public float Buy(float amountOfYourMoney)
     {
@@ -34,20 +36,17 @@ public class ItemInfo : MonoBehaviour, IBuyableItem
         return amountOfYourMoney;
     }
 
-    public void SetBought(string itemName)
-    {
-        if(this.itemName == itemName)
-        {
-            MakeBought();
-        }
-    }
+    //public void SetBought()
+    //{
+    //    MakeBought();
+    //}
     public void SetUnbought()
     {
         isBought = false;
         GetComponent<Button>().enabled = true;
         boughtCover.SetActive(false);
     }
-    private void MakeBought()
+    public void MakeBought()
     {
         isBought = true;
         GetComponent<Button>().enabled = false;
