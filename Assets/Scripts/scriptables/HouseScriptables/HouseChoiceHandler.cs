@@ -8,15 +8,15 @@ using UnityEngine.UI;
 public class HouseChoiceHandler : MonoBehaviour
 {
     [SerializeField] private Image image;
-    [SerializeField] private TMP_Text name;
+    [SerializeField] private TMP_Text houseName;
     [SerializeField] private HouseChoiceScriptable choice;
-    private ChoicesTypes.HouseType _houseType;
+    private TypesNames.HouseType _houseType;
 
     private void Start()
     {
         _houseType = choice.houseType;
         image.sprite = choice.choiceSprite;
-        name.text = choice.houseType.ToString();
+        houseName.text = choice.houseType.ToString();
 
         gameObject.GetComponent<Button>().onClick.AddListener(SetChoice);
     }

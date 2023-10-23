@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class ChoicesTypes 
+public static class TypesNames 
 {
     public enum ChoiceType
     {
@@ -28,5 +28,14 @@ public static class ChoicesTypes
         pot,
         box,
         can
+    }
+    public enum ItemType
+    {
+        sofa,
+        carpet,
+        tv,
+        fridge,
+        table,
+        chair
     }
 }

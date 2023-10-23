@@ -1,1 +1,14 @@
-{"name":"","health":60.0,"food":"sushie","house":"box","miraculous":"blueShell"}
+{
+    "name": "",
+    "health": 30.0,
+    "money": 200.0,
+    "food": "sushie",
+    "house": "box",
+    "miraculous": "blackShell",
+    "BoughtItems": [
+        "New TV",
+        "Old Carpet",
+        "Cool sofa",
+        "Table"
+    ]
+}

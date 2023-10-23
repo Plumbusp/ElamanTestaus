@@ -10,24 +10,21 @@ public class DataObject
 {
     public string name;
     public float health;
+    public float money;
     public string food;
     public string house;
     public string miraculous;
-    /*
-    public enum RodentType
-    {
-        hamster,
-        rat,
-        mouse
-    }
-    */
+    public List<string> BoughtItems;
+
     public DataObject()
     {
+        BoughtItems = new List<string>();
         food = string.Empty;
         house = string.Empty;
         miraculous = string.Empty;
         name = "some name";
         health = 100;
+        money = 1000f;
     }
     public override bool Equals(object obj)
     {
