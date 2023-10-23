@@ -37,14 +37,14 @@ public class SavingsManager : MonoBehaviour
         if(dataObject == null)
         {
             NewGame();
-            Debug.Log("No Saved Data Was Found");
+            //Debug.Log("No Saved Data Was Found");
             return;
         }
         foreach(ISavable savableObject in savableObjects)
         {
             savableObject.LoadData(dataObject);
         }     
-        Debug.Log(dataObject.name + dataObject.health.ToString() + "LOADED");
+        //Debug.Log(dataObject.name + dataObject.health.ToString() + "LOADED");
     }
     public void SaveData()
     {

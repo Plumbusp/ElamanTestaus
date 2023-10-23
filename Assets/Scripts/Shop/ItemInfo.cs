@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
+
 [RequireComponent(typeof(Button))]
 public class ItemInfo : MonoBehaviour
 {
@@ -12,13 +14,11 @@ public class ItemInfo : MonoBehaviour
     [HideInInspector] public bool isBought;
     [SerializeField] private TMP_Text itemNameText;
     [SerializeField] private TMP_Text itemPriceText;
-    [SerializeField] private Image Image;
-    private Sprite sprite;
+    [SerializeField] Sprite sprite;
 
     private void Awake()
     {
         itemNameText.text = itemName;
-        sprite = Image.sprite;
         itemPriceText.text = price.ToString();
     }
     public float Buy(float amountOfYourMoney)
@@ -33,11 +33,6 @@ public class ItemInfo : MonoBehaviour
         }
         return amountOfYourMoney;
     }
-
-    //public void SetBought()
-    //{
-    //    MakeBought();
-    //}
     public void SetUnbought()
     {
         isBought = false;
@@ -52,4 +47,11 @@ public class ItemInfo : MonoBehaviour
         ConstantItem.InvokOnItemBought(itemName, sprite, itemType);
         //OnItemBought?.Invoke(itemName, sprite, itemType);  // Invoking event telling that some item is bought and specify that item with its name
     }
+    //public void FirstBought(Action<string, Sprite, TypesNames.ItemType> del)
+    //{
+    //    isBought = true;
+    //    GetComponent<Button>().enabled = false;
+    //    boughtCover.SetActive(true);
+    //    del.Invoke(itemName, sprite, itemType);
+    //}
 }

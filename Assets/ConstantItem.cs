@@ -9,5 +9,5 @@ public class ConstantItem : MonoBehaviour
     public static void InvokOnItemBought(string itemName, Sprite itemSprite, TypesNames.ItemType whichType)
     {
         OnItemBought.Invoke(itemName, itemSprite, whichType);
-    }
+     }
 }

@@ -7,8 +7,6 @@ using TMPro;
 
 public class ShopManager : MonoBehaviour, ISavable
 {
-    [SerializeField] private TMP_Text test;
-
     [SerializeField] private Image sofa;
     [SerializeField] private Image chair;
     [SerializeField] private Image table;
@@ -61,7 +59,6 @@ public class ShopManager : MonoBehaviour, ISavable
                 }
             }
         }
-        test.text = BoughtItems.Count.ToString();
     }
 
     public void SaveData(ref DataObject data)
